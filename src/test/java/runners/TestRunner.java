@@ -25,7 +25,7 @@ import managers.FileReaderManager;
  * details on cucumber options
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {
+@CucumberOptions(plugin = {"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber/report.html",
 		"junit:target/cucumber-reports/Cucumber.xml",
 		"html:target/cucumber-reports"},
 features = "src/test/resources/features", 
