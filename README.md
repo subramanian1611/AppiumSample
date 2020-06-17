@@ -44,4 +44,6 @@ go to 'src/test/java/runners/TestRunner.java' and run the file as
 
 # Reporting
 
+HTML report can be found at 
+
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
