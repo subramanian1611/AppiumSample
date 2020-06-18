@@ -19,7 +19,6 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class Setup {
 
-
 	// Webdriver instance for easy access
 	public static AndroidDriver<MobileElement> driver;
 	public static WebDriverWait wait;
@@ -46,7 +45,6 @@ public class Setup {
 	 * Method details out configuration for installing app on android device
 	 */
 	public AndroidDriver<MobileElement> intallApp() {
-		
 		
 		if (driver == null) {
 			
