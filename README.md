@@ -8,7 +8,7 @@ Sample Appium project for Android native app automation
 
 1. RestAssured interface
 2. Maven
-2. Cucumeber
+2. Cucumeber (BDD)
 3. Junit
 
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
@@ -25,10 +25,7 @@ Clone the project from 'https://github.com/nitint007/AppiumSample' to your works
 
 cd AppiumSample
 
-mvn clean install
-
-go to 'src/test/java/runners/TestRunner.java' and run the file as 
-
+mvn clean test
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
 
 # Execution from Editor
@@ -36,7 +33,7 @@ go to 'src/test/java/runners/TestRunner.java' and run the file as
 1. Clone the GIT project to your local from 'https://github.com/nitint007/AppiumSample'
 2. Import as 'Maven Project' in your editor
 3. Right click on project root and do 'Maven > clean' and 'Maven > install'
-4. Go to 'AppiumSample/src/test/java/runner/TestRunner.java' and open
+4. Go to '/AppiumSample/src/test/java/runners/TestRunner.java' and open
 5. Right click on file and do 'Run as' > 'Junit Test'
 6. Wait until expected suite is executed and observe the results
 
@@ -44,6 +41,6 @@ go to 'src/test/java/runners/TestRunner.java' and run the file as
 
 # Reporting
 
-HTML report can be found at 
+Extent report can be found at '/AppiumSample/target/cucumber/report.html'
 
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
