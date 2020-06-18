@@ -66,7 +66,6 @@ public class AmazonTest extends Setup {
 		
 		homepage = new HomeScreen();
 
-
 		if (Button.equals("Skip sign in")) {
 			try {
 
