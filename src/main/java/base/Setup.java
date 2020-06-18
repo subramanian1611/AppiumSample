@@ -43,7 +43,7 @@ public class Setup {
 	}
 
 	/*
-	 * Method details out configuration for chrome browser
+	 * Method details out configuration for installing app on android device
 	 */
 	public AndroidDriver<MobileElement> intallApp() {
 		
