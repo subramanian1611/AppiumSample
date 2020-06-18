@@ -21,7 +21,6 @@ public class Setup {
 
 	// Webdriver instance for easy access
 	public static AndroidDriver<MobileElement> driver;
-	public static WebDriverWait wait;
 	public static Properties properties;
 	
 	// Class constructor for initialising objects
@@ -32,6 +31,7 @@ public class Setup {
 			reader = new BufferedReader(new FileReader(configFilePath));
 			properties = new Properties();
 			properties.load(reader);
+			
 		} catch (FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
 			throw new RuntimeException("File Data.properties not found at given path.");

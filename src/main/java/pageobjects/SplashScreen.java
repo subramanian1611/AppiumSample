@@ -47,13 +47,13 @@ public class SplashScreen extends Setup{
 
 	// Elements below utilised in by the methods above.
 	private MobileElement appLogo() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/sso_splash_logo"))));
+		return (MobileElement)
+				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/sso_splash_logo"));
 	}
 	
 	private MobileElement skipSignInButton() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/skip_sign_in_button"))));
+		return (MobileElement)
+				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/skip_sign_in_button"));
 	}
 
 }

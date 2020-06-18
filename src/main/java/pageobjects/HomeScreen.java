@@ -16,9 +16,9 @@ public class HomeScreen extends Setup {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void assertHomePage() {
-		
+
 		Assert.assertTrue(amazonLogo().isDisplayed());
 	}
 
@@ -26,17 +26,17 @@ public class HomeScreen extends Setup {
 
 		hamburgerMenu().click();
 	}
-	
+
 	public void clickAmazonLogo() {
 
 		amazonLogo().click();
 	}
-	
+
 	public void clickDeliverButton() {
 
 		deliver().click();
 	}
-	
+
 	public void clickUseCurrentLocation() {
 
 		useCurrentLocation().click();
@@ -44,38 +44,33 @@ public class HomeScreen extends Setup {
 
 	// Elements below utilised in by the methods above.
 	private MobileElement amazonLogo() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/action_bar_home_logo"))));
+		return (MobileElement) driver.findElement(By.id("com.amazon.mShop.android.shopping:id/action_bar_home_logo"));
 	}
 
 	private MobileElement hamburgerMenu() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/action_bar_burger_icon"))));
+		return (MobileElement) driver.findElement(By.id("com.amazon.mShop.android.shopping:id/action_bar_burger_icon"));
 	}
 
 	private MobileElement startShopping() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.xpath("//android.widget.TextView[@text='Start shopping']"))));
+		return (MobileElement) driver.findElement(By.xpath("//android.widget.TextView[@text='Start shopping']"));
 	}
 
 	private MobileElement clearButton() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/rs_clear_text_button_accessibility"))));
+		return (MobileElement) driver
+				.findElement(By.id("com.amazon.mShop.android.shopping:id/rs_clear_text_button_accessibility"));
 	}
 
 	private MobileElement deliver() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Deliver')]"))));
+		return (MobileElement) driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Deliver')]"));
 	}
 
 	private MobileElement useCurrentLocation() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/loc_ux_update_current_pin_code"))));
+		return (MobileElement) driver
+				.findElement(By.id("com.amazon.mShop.android.shopping:id/loc_ux_update_current_pin_code"));
 	}
 
 	private MobileElement signinForBestExperience() {
-		return (MobileElement) wait.until(ExpectedConditions
-				.elementToBeClickable(driver.findElement(By.xpath("//*[@text='Sign in for the best experience']"))));
+		return (MobileElement) driver.findElement(By.xpath("//*[@text='Sign in for the best experience']"));
 	}
 
 }

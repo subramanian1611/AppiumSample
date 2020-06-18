@@ -16,61 +16,54 @@ public class CartScreen extends Setup {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void assertAddMobileNumber() {
-		
-		Assert.assertTrue("Expected Element is not Present",addMobileNumber().isDisplayed());
+
+		Assert.assertTrue("Expected Element is not Present", addMobileNumber().isDisplayed());
 	}
-	
+
 	public void clickProceedToBuy() {
-		
+
 		proceedToBuy().click();
 	}
-	
+
 	public void clickCartMenu() {
-		
+
 		cartMenu().click();
 	}
 
 	// Elements below utilised in by the methods above.
 	private MobileElement cartMenu() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/action_bar_cart_image"))));
+		return (MobileElement) driver.findElement(By.id("com.amazon.mShop.android.shopping:id/action_bar_cart_image"));
 	}
 
 	private MobileElement proceedToBuy() {
-		return (MobileElement) wait.until(ExpectedConditions
-				.elementToBeClickable(driver.findElement(By.xpath("//android.widget.Button[@text='Proceed to Buy']"))));
+		return (MobileElement) driver.findElement(By.xpath("//android.widget.Button[@text='Proceed to Buy']"));
 	}
 
 	private MobileElement subTotal() {
-		return (MobileElement) wait.until(ExpectedConditions
-				.elementToBeClickable(driver.findElement(By.xpath("//android.view.View[contains(@text,'Subtotal')]"))));
+		return (MobileElement) driver.findElement(By.xpath("//android.view.View[contains(@text,'Subtotal')]"));
 	}
 
 	private MobileElement clearSearch() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/iss_search_dropdown_item_clear"))));
+		return (MobileElement) driver
+				.findElement(By.id("com.amazon.mShop.android.shopping:id/iss_search_dropdown_item_clear"));
 	}
 
 	private MobileElement addMobileNumber() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.xpath("//android.view.View[@text='Add a mobile phone number']"))));
+		return (MobileElement) driver.findElement(By.xpath("//android.view.View[@text='Add a mobile phone number']"));
 	}
 
 	private MobileElement mobileNumberField() {
-		return (MobileElement) wait.until(ExpectedConditions
-				.elementToBeClickable(driver.findElement(By.xpath("//android.widget.EditText[@index='1']"))));
+		return (MobileElement) driver.findElement(By.xpath("//android.widget.EditText[@index='1']"));
 	}
 
 	private MobileElement continueMoble() {
-		return (MobileElement) wait
-				.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@text='Continue']"))));
+		return (MobileElement) driver.findElement(By.xpath("//*[@text='Continue']"));
 	}
 
 	private MobileElement enterShippingAddress() {
-		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
-				driver.findElement(By.id("android.view.View[@text='Enter a shipping address']"))));
+		return (MobileElement) driver.findElement(By.id("android.view.View[@text='Enter a shipping address']"));
 	}
 
 }

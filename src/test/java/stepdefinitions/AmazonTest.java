@@ -63,35 +63,34 @@ public class AmazonTest extends Setup {
 	public void user_clicks_on_button(String Button) throws NoSuchElementException, FileNotFoundException, IOException {
 
 		splashscreen = new SplashScreen();
-		splashscreen.skipSignin();
 		
 		homepage = new HomeScreen();
 
 
-//		if (Button.equals("Skip sign in")) {
-//			try {
-//
-//				homepage.skipSignin();
-//
-//			} catch (NoSuchElementException nsee) {
-//				nsee.printStackTrace();
-//				throw new RuntimeException("Skip Sign in not Displayed Hence moving to HomeScreen");
-//			}
-//
-//		} else if (Button.equals("hamburger")) {
-//
-//			homepage.clickhamburgerMenu();
-//
-//		} else if (Button.equals("Amazon")) {
-//
-//			homepage.clickAmazonLogo();
-//
-//		} else if (Button.equals("Proceed to Buy")) {
-//
-//			cartpage = new CartScreen();
-//			cartpage.clickProceedToBuy();
-//			cartpage.assertAddMobileNumber();
-//		}
+		if (Button.equals("Skip sign in")) {
+			try {
+
+				splashscreen.skipSignin();
+
+			} catch (NoSuchElementException nsee) {
+				nsee.printStackTrace();
+				throw new RuntimeException("Skip Sign in not Displayed Hence moving to HomeScreen");
+			}
+
+		} else if (Button.equals("hamburger")) {
+
+			homepage.clickhamburgerMenu();
+
+		} else if (Button.equals("Amazon")) {
+
+			homepage.clickAmazonLogo();
+
+		} else if (Button.equals("Proceed to Buy")) {
+
+			cartpage = new CartScreen();
+			cartpage.clickProceedToBuy();
+			cartpage.assertAddMobileNumber();
+		}
 	}
 
 	@When("^Verify if \"([^\"]*)\" is displayed$")
