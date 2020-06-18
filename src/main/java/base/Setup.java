@@ -73,7 +73,7 @@ public class Setup {
 			try {
 				URL url = new URL("http://0.0.0.0:4723/wd/hub");
 				driver = new AndroidDriver<MobileElement>(url, cap);
-				driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
 				System.out.println("Mobile application launched." + driver);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();

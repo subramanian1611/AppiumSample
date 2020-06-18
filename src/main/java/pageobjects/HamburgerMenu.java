@@ -4,10 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.Setup;
+import io.appium.java_client.MobileElement;
 
 public class HamburgerMenu extends Setup {
 
@@ -34,18 +34,18 @@ public class HamburgerMenu extends Setup {
 	}
 
 	// Elements below utilised in by the methods above.
-	private WebElement helloSignIn() {
-		return wait.until(ExpectedConditions.elementToBeClickable(
+	private MobileElement helloSignIn() {
+		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
 				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/gno_greeting_text_view"))));
 	}
 
-	private WebElement mobileNumberOrEmail() {
-		return wait.until(ExpectedConditions
+	private MobileElement mobileNumberOrEmail() {
+		return (MobileElement) wait.until(ExpectedConditions
 				.elementToBeClickable(driver.findElement(By.xpath("//android.widget.EditText[@index='1']"))));
 	}
 
-	private WebElement continueButton() {
-		return wait.until(ExpectedConditions
+	private MobileElement continueButton() {
+		return (MobileElement) wait.until(ExpectedConditions
 				.elementToBeClickable(driver.findElement(By.xpath("//android.widget.Button[@text='Continue']"))));
 	}
 }

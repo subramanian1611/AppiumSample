@@ -7,23 +7,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.ScreenOrientation;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import com.aventstack.extentreports.model.Log;
-
 import base.Setup;
 import commonmethods.CommonUtilMethods;
+import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pageobjects.CartPage;
+import pageobjects.CartScreen;
 import pageobjects.HamburgerMenu;
-import pageobjects.HomePage;
-import pageobjects.LoginPage;
-import pageobjects.ProductPage;
-import pageobjects.SearchResultPage;
+import pageobjects.HomeScreen;
+import pageobjects.LoginScreen;
+import pageobjects.ProductScreen;
+import pageobjects.SearchResultScreen;
+import pageobjects.SplashScreen;
 
 /**
  * @author nitinthite
@@ -31,12 +30,13 @@ import pageobjects.SearchResultPage;
  */
 public class AmazonTest extends Setup {
 
-	HomePage homepage;
-	ProductPage productpage;
-	CartPage cartpage;
+	SplashScreen splashscreen;
+	HomeScreen homepage;
+	ProductScreen productpage;
+	CartScreen cartpage;
 	HamburgerMenu menu;
-	SearchResultPage searchresult;
-	LoginPage loginpage;
+	SearchResultScreen searchresult;
+	LoginScreen loginpage;
 	CommonUtilMethods commonutils;
 
 	public AmazonTest() throws FileNotFoundException, IOException {
@@ -44,47 +44,60 @@ public class AmazonTest extends Setup {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Before
+	//************** Cucumber Hooks @Before - to execute a suite precondition **************
+	
+		@Before
+		public void beforeAllScenarios(Scenario s)  {
+			System.out.println("Inside Hooks @Before");
+			intallApp();
+		}
+		
+	//************** @Given - implementation details **************
 	@Given("^User lunches the Amazon app$")
 	public void launch_the_Amazon_app() throws Throwable {
-		Setup setup = new Setup();
-		setup.intallApp();
+		splashscreen = new SplashScreen();
+		splashscreen.assertSplashScreen();
 	}
 
 	@When("^User clicks on \"([^\"]*)\" button$")
-	public void user_clicks_on_button(String Button) throws Throwable {
+	public void user_clicks_on_button(String Button) throws NoSuchElementException, FileNotFoundException, IOException {
 
-		homepage = new HomePage();
+		splashscreen = new SplashScreen();
+		splashscreen.skipSignin();
+		
+		homepage = new HomeScreen();
 
-		if (Button.equals("Skip sign in")) {
-			try {
 
-				homepage.skipSignin();
-
-			} catch (Exception E) {
-				System.out.println("Skip Sign in not Displayed Hence moving to HomePage");
-			}
-
-		} else if (Button.equals("hamburger")) {
-
-			homepage.clickhamburgerMenu();
-
-		} else if (Button.equals("Amazon")) {
-
-			homepage.clickAmazonLogo();
-
-		} else if (Button.equals("Proceed to Buy")) {
-
-			cartpage = new CartPage();
-			cartpage.clickProceedToBuy();
-			cartpage.assertAddMobileNumber();
-		}
+//		if (Button.equals("Skip sign in")) {
+//			try {
+//
+//				homepage.skipSignin();
+//
+//			} catch (NoSuchElementException nsee) {
+//				nsee.printStackTrace();
+//				throw new RuntimeException("Skip Sign in not Displayed Hence moving to HomeScreen");
+//			}
+//
+//		} else if (Button.equals("hamburger")) {
+//
+//			homepage.clickhamburgerMenu();
+//
+//		} else if (Button.equals("Amazon")) {
+//
+//			homepage.clickAmazonLogo();
+//
+//		} else if (Button.equals("Proceed to Buy")) {
+//
+//			cartpage = new CartScreen();
+//			cartpage.clickProceedToBuy();
+//			cartpage.assertAddMobileNumber();
+//		}
 	}
 
 	@When("^Verify if \"([^\"]*)\" is displayed$")
 	public void verify_is_displayed(String Page) throws Throwable {
 
-		homepage = new HomePage();
+		homepage = new HomeScreen();
 
 		if (Page.equals("Home page")) {
 			homepage.assertHomePage();
@@ -107,18 +120,18 @@ public class AmazonTest extends Setup {
 		menu.enterMobileNumberOrEmail("sdjnf@aknf.com");//properties.getProperty("email")
 		menu.clickContinueButton();
 
-		loginpage = new LoginPage();
+		loginpage = new LoginScreen();
 		loginpage.enterPassword("sgtwetew");//properties.getProperty("password")
 		loginpage.clickLogin();
 
-		homepage = new HomePage();
+		homepage = new HomeScreen();
 		homepage.assertHomePage();
 	}
 
 	@When("^Validate text \"([^\"]*)\" is displayed$")
 	public void validate_text_is_displayed(String Text) throws Throwable {
 
-		homepage = new HomePage();
+		homepage = new HomeScreen();
 
 		if (Text.endsWith("Amazon Logo")) {
 
@@ -129,7 +142,7 @@ public class AmazonTest extends Setup {
 	@When("^Validate \"([^\"]*)\" is displayed$")
 	public void validate_is_displayed(String Options) throws Throwable {
 
-		searchresult = new SearchResultPage();
+		searchresult = new SearchResultScreen();
 
 		if (Options.equals("Search Bar")) {
 			searchresult.assertSearchResultPage();
@@ -149,12 +162,12 @@ public class AmazonTest extends Setup {
 	@When("^Choose the current location$")
 	public void choose_the_current_location() throws Throwable {
 
-		homepage = new HomePage();
+		homepage = new HomeScreen();
 		homepage.clickAmazonLogo();
 		homepage.clickDeliverButton();
 		homepage.clickUseCurrentLocation();
 
-		productpage = new ProductPage();
+		productpage = new ProductScreen();
 		productpage.clickAllowPermissions();
 
 	}
@@ -162,7 +175,7 @@ public class AmazonTest extends Setup {
 	@When("^Search for the product \"([^\"]*)\"$")
 	public void search_for_the_product(String Product) throws Throwable {
 
-		searchresult = new SearchResultPage();
+		searchresult = new SearchResultScreen();
 
 		if (Product.equals("65-inch TV")) {
 			searchresult.assertResultCount();
@@ -179,7 +192,7 @@ public class AmazonTest extends Setup {
 		// Scrolling to the Requested Element by Text
 		commonutils.scrollToText("Samsung", driver);//properties.getProperty("Brand")
 
-		productpage = new ProductPage();
+		productpage = new ProductScreen();
 		productpage.assertRandomResult();
 		productpage.assertInchesDisplayed();
 	}
@@ -187,7 +200,7 @@ public class AmazonTest extends Setup {
 	@When("^Verify product details are displayed$")
 	public void verify_product_details_are_displayed() throws Throwable {
 
-		productpage = new ProductPage();
+		productpage = new ProductScreen();
 		System.out.println("The Selected Product is : " + productpage.getProductName());
 		// Verify the Choosen Product is same as TV or not
 		Assert.assertTrue("The suggestions are not having expected Product",
@@ -197,7 +210,7 @@ public class AmazonTest extends Setup {
 	@When("^User Verifies the details of the selected Product$")
 	public void user_Verifies_the_details_of_the_selected_Product() throws Throwable {
 
-		productpage = new ProductPage();
+		productpage = new ProductScreen();
 		
 		// To get the Name of ChoosenProduct
 		String ProductDetailsPage = productpage.getProductName();
@@ -219,7 +232,7 @@ public class AmazonTest extends Setup {
 		Thread.sleep(4000);
 		commonutils.scrollToText("Add to Cart", driver);
 		
-		productpage = new ProductPage();
+		productpage = new ProductScreen();
 		productpage.assertProductAddedToCart();
 	}
 
@@ -233,17 +246,17 @@ public class AmazonTest extends Setup {
 	@When("^Navigate to the Cart menu$")
 	public void navigate_to_the_Cart_menu() throws Throwable {
 
-		homepage = new HomePage();
+		homepage = new HomeScreen();
 		homepage.clickAmazonLogo();
 		
-		cartpage = new CartPage();
+		cartpage = new CartScreen();
 		cartpage.clickCartMenu();
 	}
 
 	@When("^Verify the Product in Cart$")
 	public void verify_the_Product_in_Cart() throws Throwable {
 		
-		productpage = new ProductPage();
+		productpage = new ProductScreen();
 		String ProductCartPage = productpage.getProductName();
 		
 		// To verify the Expected Element is displayd on Current Page

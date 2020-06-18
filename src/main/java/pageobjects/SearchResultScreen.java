@@ -5,14 +5,14 @@ import java.io.IOException;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.Setup;
+import io.appium.java_client.MobileElement;
 
-public class SearchResultPage extends Setup {
+public class SearchResultScreen extends Setup {
 
-	public SearchResultPage() throws FileNotFoundException, IOException {
+	public SearchResultScreen() throws FileNotFoundException, IOException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,18 +41,18 @@ public class SearchResultPage extends Setup {
 	}
 
 	// Elements below utilised in by the methods above.
-	private WebElement homeSearch() {
-		return wait.until(ExpectedConditions.elementToBeClickable(
+	private MobileElement homeSearch() {
+		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
 				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/rs_search_src_text"))));
 	}
 
-	private WebElement searchDropDown() {
-		return wait.until(ExpectedConditions.elementToBeClickable(
+	private MobileElement searchDropDown() {
+		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
 				driver.findElement(By.id("com.amazon.mShop.android.shopping:id/iss_search_dropdown_item_text"))));
 	}
 
-	private WebElement resultsCount() {
-		return wait.until(ExpectedConditions.elementToBeClickable(
+	private MobileElement resultsCount() {
+		return (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(
 				driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Results')]"))));
 	}
 }
