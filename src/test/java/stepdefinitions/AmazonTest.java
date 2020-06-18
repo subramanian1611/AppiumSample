@@ -56,7 +56,7 @@ public class AmazonTest extends Setup {
 
 		homepage = new HomePage();
 
-		if (Button.equals("Start shopping")) {
+		if (Button.equals("Skip sign in")) {
 			try {
 
 				homepage.skipSignin();
@@ -87,7 +87,7 @@ public class AmazonTest extends Setup {
 		homepage = new HomePage();
 
 		if (Page.equals("Home page")) {
-//			homepage.assertHomePage();
+			homepage.assertHomePage();
 		}
 	}
 

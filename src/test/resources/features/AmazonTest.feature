@@ -4,7 +4,7 @@ Description: The feature to verify if user able to add product to app
 
 Background: 
 	Given User lunches the Amazon app 
-	When User clicks on "Start shopping" button 
+	When User clicks on "Skip sign in" button 
 	And Verify if "Home page" is displayed 
 	And User clicks on "hamburger" button 
 	And Login to amazon app 

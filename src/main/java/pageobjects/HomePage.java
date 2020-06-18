@@ -15,8 +15,6 @@ public class HomePage extends Setup {
 	public HomePage() throws FileNotFoundException, IOException {
 		super();
 		// TODO Auto-generated constructor stub
-		
-//		assertHomePage();
 	}
 	
 	public void assertHomePage() {
