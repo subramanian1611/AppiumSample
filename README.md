@@ -13,9 +13,9 @@ Sample Appium project for Android native app automation
 
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
 
-Pre-requisites:
+# Pre-requisites:
 
-Need to provide device details in 'config.properties' that will run the suite on
+Need to provide device details in 'config.properties' that will run the suite over
 
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
 
@@ -26,6 +26,7 @@ Clone the project from 'https://github.com/nitint007/AppiumSample' to your works
 cd AppiumSample
 
 mvn clean test
+
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
 
 # Execution from Editor
