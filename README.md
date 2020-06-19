@@ -6,7 +6,7 @@ Sample Appium project for Android native app automation
 
 # Framework components:
 
-1. RestAssured interface
+1. Selenium WebDriver with Java
 2. Maven
 2. Cucumeber (BDD)
 3. Junit
