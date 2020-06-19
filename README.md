@@ -15,7 +15,9 @@ Sample Appium project for Android native app automation
 
 # Pre-requisites:
 
-Need to provide device details in 'config.properties' that will run the suite over
+1. Need to provide device details in 'config.properties' that will run the suite over
+
+2. Start appium server before suite execution
 
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
 
