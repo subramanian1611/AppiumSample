@@ -44,17 +44,21 @@ public class AmazonTest extends Setup {
 		// TODO Auto-generated constructor stub
 	}
 
-	//************** Cucumber Hooks @Before - to execute a suite precondition **************
-	
-		@Before
-		public void beforeAllScenarios(Scenario s)  {
-			System.out.println("Inside Hooks @Before");
-			intallApp();
-		}
-		
-	//************** @Given - implementation details **************
+	// ************** Cucumber Hooks @Before - to execute a suite precondition
+	// **************
+
+	@Before
+	public void beforeAllScenarios(Scenario s) {
+		System.out.println("Inside Hooks @Before");
+		intallApp();
+	}
+
+	// ************** @Given - implementation details **************
 	@Given("^User lunches the Amazon app$")
 	public void launch_the_Amazon_app() throws Throwable {
+		// To clear user data i.e. reset and launch the app
+		driver.resetApp();
+		
 		splashscreen = new SplashScreen();
 		splashscreen.assertSplashScreen();
 	}
@@ -63,7 +67,7 @@ public class AmazonTest extends Setup {
 	public void user_clicks_on_button(String Button) throws NoSuchElementException, FileNotFoundException, IOException {
 
 		splashscreen = new SplashScreen();
-		
+
 		homepage = new HomeScreen();
 
 		if (Button.equals("Skip sign in")) {
@@ -115,11 +119,12 @@ public class AmazonTest extends Setup {
 
 		menu = new HamburgerMenu();
 		menu.clickHelloSignin();
-		menu.enterMobileNumberOrEmail("sdjnf@aknf.com");//properties.getProperty("email")
+
+		menu.enterMobileNumberOrEmail(dproperties.getProperty("email"));
 		menu.clickContinueButton();
 
 		loginpage = new LoginScreen();
-		loginpage.enterPassword("sgtwetew");//properties.getProperty("password")
+		loginpage.enterPassword(dproperties.getProperty("password"));
 		loginpage.clickLogin();
 
 		homepage = new HomeScreen();
@@ -144,7 +149,7 @@ public class AmazonTest extends Setup {
 
 		if (Options.equals("Search Bar")) {
 			searchresult.assertSearchResultPage();
-		} else if (Options.equals("65-inch TV")) {
+		} else if (Options.equalsIgnoreCase(dproperties.getProperty("option"))) {
 			searchresult.assertResultCount();
 		}
 	}
@@ -175,7 +180,7 @@ public class AmazonTest extends Setup {
 
 		searchresult = new SearchResultScreen();
 
-		if (Product.equals("65-inch TV")) {
+		if (Product.equalsIgnoreCase(dproperties.getProperty("option"))) {
 			searchresult.assertResultCount();
 			searchresult.enterValuesForHomeSearch(Product);
 			searchresult.clickDropdown();
@@ -188,7 +193,7 @@ public class AmazonTest extends Setup {
 
 		commonutils = new CommonUtilMethods();
 		// Scrolling to the Requested Element by Text
-		commonutils.scrollToText("Samsung", driver);//properties.getProperty("Brand")
+		commonutils.scrollToText(dproperties.getProperty("Brand"), driver);
 
 		productpage = new ProductScreen();
 		productpage.assertRandomResult();
@@ -202,22 +207,22 @@ public class AmazonTest extends Setup {
 		System.out.println("The Selected Product is : " + productpage.getProductName());
 		// Verify the Choosen Product is same as TV or not
 		Assert.assertTrue("The suggestions are not having expected Product",
-				productpage.getProductName().contains("tv"));//properties.getProperty("tv")
+				productpage.getProductName().contains(dproperties.getProperty("productName")));
 	}
 
 	@When("^User Verifies the details of the selected Product$")
 	public void user_Verifies_the_details_of_the_selected_Product() throws Throwable {
 
 		productpage = new ProductScreen();
-		
+
 		// To get the Name of ChoosenProduct
 		String ProductDetailsPage = productpage.getProductName();
-		
-		// To verify the Choosen Product is same as TV or not
-//		Assert.assertEquals(ProductDetailsPage, ProductName);
+
+		// To verify the Chosen Product is same as TV or not
+		// Assert.assertEquals(ProductDetailsPage, ProductName);
 		System.out.println("The Name of the Choosen Product is :" + ProductDetailsPage);
-		
-		// To get the Price of Choosen Product
+
+		// To get the Price of Chosen Product
 		String ProductPrice = productpage.getProductPrice();
 		System.out.println("The Price of the Choosen Prodcut is: " + ProductPrice);
 	}
@@ -229,7 +234,7 @@ public class AmazonTest extends Setup {
 		// To add the Procut to Cart by Scrolling to Add Cart Section");
 		Thread.sleep(4000);
 		commonutils.scrollToText("Add to Cart", driver);
-		
+
 		productpage = new ProductScreen();
 		productpage.assertProductAddedToCart();
 	}
@@ -246,21 +251,22 @@ public class AmazonTest extends Setup {
 
 		homepage = new HomeScreen();
 		homepage.clickAmazonLogo();
-		
+
 		cartpage = new CartScreen();
 		cartpage.clickCartMenu();
 	}
 
 	@When("^Verify the Product in Cart$")
 	public void verify_the_Product_in_Cart() throws Throwable {
-		
+
 		productpage = new ProductScreen();
 		String ProductCartPage = productpage.getProductName();
-		
+
 		// To verify the Expected Element is displayd on Current Page
 		Assert.assertTrue("Product not displayed", productpage.getProductName().isEmpty());
-		
+
 		// To verify the Product is TV or not
-		Assert.assertTrue("The product is not present in the Cart", ProductCartPage.contains("tv"));//properties.getProperty("tv")
+		Assert.assertTrue("The product is not present in the Cart",
+				ProductCartPage.contains(dproperties.getProperty("productName")));
 	}
 }

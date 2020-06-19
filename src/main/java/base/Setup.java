@@ -21,17 +21,23 @@ public class Setup {
 
 	// Webdriver instance for easy access
 	public static AndroidDriver<MobileElement> driver;
-	public static Properties properties;
+	public static Properties properties, dproperties;
 	
 	// Class constructor for initialising objects
 	public Setup() throws FileNotFoundException, IOException {
-		BufferedReader reader;
+		BufferedReader reader1, reader2;
 		try {
 			String configFilePath = "./configs/Configuration.properties";
-			reader = new BufferedReader(new FileReader(configFilePath));
-			properties = new Properties();
-			properties.load(reader);
+			String dataFilePath = "./src/test/resources/datapropertyfiles/TestData.properties";
 			
+			reader1 = new BufferedReader(new FileReader(configFilePath));
+			reader2 = new BufferedReader(new FileReader(dataFilePath));
+			
+			properties = new Properties();
+			dproperties = new Properties();
+			
+			properties.load(reader1);
+			dproperties.load(reader2);
 		} catch (FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
 			throw new RuntimeException("File Data.properties not found at given path.");
