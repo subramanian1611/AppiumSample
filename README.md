@@ -27,7 +27,7 @@ Clone the project from 'https://github.com/nitint007/AppiumSample' to your works
 
 cd AppiumSample
 
-mvn clean test
+mvn test
 
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
 
