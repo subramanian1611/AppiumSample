@@ -27,7 +27,15 @@ Clone the project from 'https://github.com/nitint007/AppiumSample' to your works
 
 cd AppiumSample
 
-mvn test
+mvn clean test 
+
+OR (in case of multiple 'TestRunner.java' files)
+
+mvn clean test -Dsurefire.suiteJavaFiles=TestRunner.java
+
+# If fails to execute from cmd line -
+
+Go to '/AppiumSample/src/test/java/runners/TestRunner.java' Run as 'JUnit Test'
 
 -*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*--*<*>*-
 

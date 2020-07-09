@@ -8,8 +8,6 @@ import java.io.IOException;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import base.Setup;
 import io.appium.java_client.MobileElement;
 
